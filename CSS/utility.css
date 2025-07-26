@@ -1,0 +1,60 @@
+.b-red {
+    border: 2px solid red;
+}
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.invert {
+    filter: invert(1);
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.rounded {
+    border-radius: 8px;
+}
+
+.m-1 {
+    margin: 6px;
+}
+
+.p-1 {
+    padding: 20px;
+}
+
+.white-space {
+    white-space: nowrap;
+}
+/* Define scrollbar styles */
+::-webkit-scrollbar {
+    width: 10px;
+    /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #333;
+    /* Color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #666;
+    /* Color of the scroll thumb */
+    border-radius: 5px;
+    /* Rounded corners of the thumb */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+    /* Color of the thumb on hover */
+}
