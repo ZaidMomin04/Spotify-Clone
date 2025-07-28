@@ -7,7 +7,7 @@ let song_names;
 let currFolder;
 let songUL;
 
-const production = false;
+const production = true;
 const url = production ? "https://gentle-longma-1dfae3.netlify.app/" : "http://localhost:3002";
 
 const allPlay = () => {
