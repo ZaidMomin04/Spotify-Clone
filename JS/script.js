@@ -8,6 +8,7 @@ let currFolder;
 let songUL;
 
 const production = true;
+const url = production ? "https://spotify-clone-six-wine.vercel.app" : "http://localhost:3002";
 
 const allPlay = () => {
   let plays = document.querySelectorAll(".playNow>img");
@@ -18,7 +19,7 @@ const allPlay = () => {
 
 async function getSongs(folder) {
   currFolder = folder;
-  let a = await fetch(`/${folder}/`);
+  let a = await fetch(`${url}/${folder}/`);
   let respone = await a.text();
   let div = document.createElement("div");
   div.innerHTML = respone;
@@ -128,7 +129,7 @@ function secondsToHHMM(seconds) {
   return minutesStr + ":" + secondsStr;
 }
 async function displayAlbums() {
-  let a = await fetch(`/songs/`);
+  let a = await fetch(`${url}/public/songs/`);
   let respone = await a.text();
   let div = document.createElement("div");
   div.innerHTML = respone;
@@ -138,16 +139,16 @@ async function displayAlbums() {
   let array = Array.from(anchors);
   for (let index = 0; index < array.length; index++) {
     const e = array[index];
-    if (e.href.includes("/songs/") && !e.href.includes(".htaccess")) {
+    if (e.href.includes("/public/songs/") && !e.href.includes(".htaccess")) {
       let folder = e.href.split("/").slice(-2)[0].replace("%20", " ");
-      let a = await fetch(`/songs/${folder}/info.json`);
+      let a = await fetch(`${url}/public/songs/${folder}/info.json`);
       let response = await a.json();
       cardContainer.innerHTML =
         cardContainer.innerHTML +
         `<div data-folder="${folder}" class="card rounded">
           <img class="play-btn" src="ICONS/play-icon.svg" alt="" height="60">
           <img class="card-img rounded"
-              src="/songs/${folder}/cover.jpg">
+              src="${url}/public/songs/${folder}/cover.jpg">
           <h2>${response.title}</h2>
           <p>${response.description}</p>
       </div>`;
@@ -157,7 +158,7 @@ async function displayAlbums() {
   // Load the Playlist Whenever the card is clicked
   Array.from(document.querySelectorAll(".card")).forEach((element) => {
     element.addEventListener("click", async (item) => {
-      songs = await getSongs(`/songs/${item.currentTarget.dataset.folder}`);
+      songs = await getSongs(`${url}/public/songs/${item.currentTarget.dataset.folder}`);
       playMusic(songs[0]);
     });
   });
@@ -165,7 +166,7 @@ async function displayAlbums() {
 
 async function main() {
   // Get the List of all Songs
-  await getSongs(`songs/Desi Rap`);
+  await getSongs(`/public/songs/Desi Rap`);
   playMusic(song_names[0], true);
 
   // Display all the albums on the page
