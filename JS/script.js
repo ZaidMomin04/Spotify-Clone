@@ -7,8 +7,8 @@ let song_names;
 let currFolder;
 let songUL;
 
-const production = true;
-const url = production ? "https://spotify-clone-six-wine.vercel.app" : "http://localhost:3002";
+const production = false;
+const url = production ? "https://gentle-longma-1dfae3.netlify.app/" : "http://localhost:3002";
 
 const allPlay = () => {
   let plays = document.querySelectorAll(".playNow>img");
